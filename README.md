@@ -36,6 +36,6 @@
 </details>
 
 <details><summary>Авторы проекта</summary>
-Maksim Kolesnikov, Ekaterina Lyamina</b>
+Maksim Kolesnikov, Ekaterina Lyamina<br>
 Почта для связи: maksim.kolesnikov@mail.ee, ekaterina.lyamina@ivkhk.ee
 </details>
