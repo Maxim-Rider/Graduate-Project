@@ -973,4 +973,15 @@ with AUMaloiPrimorski.ADOQueryFinances do
   end;
 end;
 
+procedure TAUMaloiPrimorski.Button5Click(Sender: TObject);
+var
+  w : Integer;
+begin
+DBGrid1.Refresh;
+DBGrid2.Refresh;
+DBGrid3.Refresh;
+DBGrid4.Refresh;
+end;
+
+
 end.
