@@ -273,3 +273,88 @@ begin
         if AUMaloiPrimorski.ADOQueryFinances.Modified then AUMaloiPrimorski.ADOQueryFinances.Post;
         if AUMaloiPrimorski.ADOQuerySpend.Modified then AUMaloiPrimorski.ADOQuerySpend.Post;
 end;
+
+ //автоматическое создание счёта
+procedure TAUMaloiPrimorski.N16Click(Sender: TObject);
+var
+  MSWord: Variant;
+  currentDate: TDateTime;
+begin
+currentDate := Now;
+  try
+    MsWord := GetActiveOleObject('Word.Application');
+  except
+    try
+       MsWord := CreateOleObject('Word.Application');
+       MsWord.Visible := True;
+    except
+      Exception.Create('Error');
+    end;
+  end;
+  MSWord.Documents.Add;
+  MSWord.Selection.Font.Size := 12;
+  MSWord.Selection.TypeText('AÜ Malõi Primorski');
+  MSWord.Selection.TypeText(#13#10'Reg.');
+  MSWord.Selection.TypeText(#13#10'От'#32+DateToStr(currentDate));
+  MSWord.Selection.Font.Bold := true;
+  MSWord.Selection.TypeText(#13#10);
+  MSWord.Selection.TypeText(#13#10);
+  MSWord.Selection.TypeText(#13#10);
+  MSWord.Selection.TypeText(#13#10'При проверке установлено:');
+  MSWord.Selection.TypeText(#13#10);
+  MSWord.Selection.TypeText(#13#10);
+  MSWord.Selection.TypeText(#13#10);
+  MSWord.Selection.TypeText(#13#10);
+  MSWord.Selection.TypeText(#13#10'Членам товарищества замечание:');
+  MSWord.Selection.TypeText(#13#10);
+  MSWord.Selection.TypeText(#13#10);
+  MSWord.Selection.TypeText(#13#10);
+  MSWord.Selection.TypeText(#13#10);
+  MSWord.Selection.TypeText(#13#10'Ведомости членских взносов:');
+
+end;
+
+procedure TAUMaloiPrimorski.N17Click(Sender: TObject);
+var
+  MSWord: Variant;
+  currentDate: TDateTime;
+begin
+currentDate := Now;
+  try
+    MsWord := GetActiveOleObject('Word.Application');
+  except
+    try
+      MsWord := CreateOleObject('Word.Application');
+      MsWord.Visible := True;
+    except
+      Exception.Create('Error');
+    end;
+  end;
+  MSWord.Documents.Add;
+  MSWord.Selection.Font.Size := 12;
+  MSWord.Selection.TypeText('AÜ Malõi Primorski');
+  MSWord.Selection.TypeText(#13#10'Reg.');
+  MSWord.Selection.TypeText(#13#10'От'#32+DateToStr(currentDate));
+  MSWord.Selection.TypeText(#13#10);
+  MSWord.Selection.TypeText(#13#10);
+  MSWord.Selection.Font.Bold := true;
+  MSWord.Selection.Font.Underline := true;
+  MSWord.Selection.Font.Size := 13;
+  MSWord.Selection.TypeText(#13#10'Расчётный счёт за период ');
+  MSWord.Selection.Font.Underline := false;
+  MSWord.Selection.Font.Bold := false;
+  MSWord.Selection.TypeText(#13#10'Сальдо на ');
+  MSWord.Selection.TypeText(#13#10);
+  MSWord.Selection.Font.Bold := true;
+  MSWord.Selection.TypeText(#13#10'Доходы:');
+  MSWord.Selection.TypeText(#13#10);
+  MSWord.Selection.TypeText(#13#10'Итого доходов:');
+  MSWord.Selection.TypeText(#13#10);
+  MSWord.Selection.TypeText(#13#10);
+  MSWord.Selection.TypeText(#13#10'Расходы:');
+  MSWord.Selection.TypeText(#13#10);
+  MSWord.Selection.TypeText(#13#10'Итого расходов:');
+  MSWord.Selection.TypeText(#13#10);
+  MSWord.Selection.TypeText(#13#10);
+  MSWord.Selection.TypeText(#13#10'Сальдо на ');
+end;
