@@ -513,7 +513,6 @@ N11.Caption:='Изменить запись [Доп.финансы]';
  finally
    Ini.Free;
  end;
- 
 //загрузка размеров окна приложения
 //Ini := TIniFile.Create(ExtractFilePath(Application.ExeName) + 'WindowSettings.ini');
 Ini := TIniFile.Create(ExtractFilePath(Application.ExeName) + 'Config.ini');
@@ -531,7 +530,17 @@ Ini := TIniFile.Create(ExtractFilePath(Application.ExeName) + 'Config.ini');
   finally
     Ini.Free;
   end;
-
+//загрузка настроек DBGrid-ов
+//Ini := TIniFile.Create(ExtractFilePath(Application.ExeName)+'DBGridSettings.ini');
+Ini := TIniFile.Create(ExtractFilePath(Application.ExeName)+'Config.ini');
+  try
+    DBGrid1.Height := Ini.ReadInteger('DBGrid1', 'Height', DBGrid1Height);
+    DBGrid2.Height := Ini.ReadInteger('DBGrid2', 'Height', DBGrid2Height);
+    DBGrid3.Height := Ini.ReadInteger('DBGrid3', 'Height', DBGrid3Height);
+    DBGrid4.Height := Ini.ReadInteger('DBGrid4', 'Height', DBGrid4Height);
+  finally
+    Ini.Free;
+  end;
 end;
 end;
 
@@ -542,6 +551,17 @@ procedure TAUMaloiPrimorski.FormClose(Sender: TObject; var Action: TCloseAction)
 var
   Ini: TIniFile;
 begin   
+//сохранение настроек DBGrid-ов
+//Ini := TIniFile.Create(ExtractFilePath(ParamStr(0))+'DBGridSettings.ini');
+Ini := TIniFile.Create(ExtractFilePath(ParamStr(0))+'Config.ini');
+  try
+  Ini.WriteInteger('DBGrid1', 'Height', DBGrid1.Height);
+  Ini.WriteInteger('DBGrid2', 'Height', DBGrid2.Height);
+  Ini.WriteInteger('DBGrid3', 'Height', DBGrid3.Height);
+  Ini.WriteInteger('DBGrid4', 'Height', DBGrid4.Height);
+  finally
+  Ini.Free;
+  end;
 //сохранение настроек checkbox-ов
 //Ini := TIniFile.Create(ExtractFilePath(ParamStr(0))+'CheckBoxSettings.ini');
 Ini := TIniFile.Create(ExtractFilePath(ParamStr(0))+'Config.ini');
