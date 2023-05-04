@@ -983,5 +983,16 @@ DBGrid3.Refresh;
 DBGrid4.Refresh;
 end;
 
+//Сделать активной кнопку "удаление всех записей"
+procedure TAUMaloiPrimorski.Button3Click(Sender: TObject);
+begin
+N18.Enabled := True;
+end;
+
+//Сбросить кнопку "удаление всех записей"
+procedure TAUMaloiPrimorski.Button4Click(Sender: TObject);
+begin
+N18.Enabled := False;
+end;
 
 end.
