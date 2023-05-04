@@ -604,3 +604,12 @@ Ini := TIniFile.Create(ExtractFilePath(Application.ExeName) + 'Config.ini');
     Ini.Free;
   end;
 end;
+
+procedure TAUMaloiPrimorski.N20Click(Sender: TObject);
+begin
+if MessageBox(Handle, 'Вы действительно хотите сделать копию текущей базы данных?',  'Запрос на копирование БД',(MB_YESNO+MB_ICONQUESTION))=idYes
+then begin
+CopyFile(PChar(put), PChar('DataBaseCopy.mdb'),false);
+MessageDlg('Копирование завершено!',mtInformation, [mbOk], 0);
+end;
+end;
