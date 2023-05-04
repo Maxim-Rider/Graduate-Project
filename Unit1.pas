@@ -536,6 +536,8 @@ AUMaloiPrimorski.ADOQuerySpend.Active:=True;
 //Ini := TIniFile.Create(ExtractFilePath(Application.ExeName) + 'WindowSettings.ini');
 Ini := TIniFile.Create(ExtractFilePath(Application.ExeName) + 'Config.ini');
   try
+  if Ini.ReadBool('WINDOW', 'Maximized', False) then
+      WindowState := wsMaximized
     Left := Ini.ReadInteger('WINDOW', 'Left', Left);
     Top := Ini.ReadInteger('WINDOW', 'Top', Top);
     Width := Ini.ReadInteger('WINDOW', 'Width', Width);
@@ -544,8 +546,7 @@ Ini := TIniFile.Create(ExtractFilePath(Application.ExeName) + 'Config.ini');
     winTop := Top;
     winWidth := Width;
     winHeight := Height;
-    if Ini.ReadBool('WINDOW', 'Maximized', False) then
-      WindowState := wsMaximized
+    
   finally
     Ini.Free;
   end;
@@ -595,11 +596,12 @@ Ini := TIniFile.Create(ExtractFilePath(ParamStr(0))+'Config.ini');
 //Ini := TIniFile.Create(ExtractFilePath(Application.ExeName) + 'WindowSettings.ini');
 Ini := TIniFile.Create(ExtractFilePath(Application.ExeName) + 'Config.ini');
   try
+    Ini.WriteBool('WINDOW', 'Maximized', WindowState = wsMaximized);
     Ini.WriteInteger('WINDOW', 'Left', winLeft);
     Ini.WriteInteger('WINDOW', 'Top', winTop);
     Ini.WriteInteger('WINDOW', 'Width', winWidth);
     Ini.WriteInteger('WINDOW', 'Height', winHeight);
-    Ini.WriteBool('WINDOW', 'Maximized', WindowState = wsMaximized);
+    
   finally
     Ini.Free;
   end;
