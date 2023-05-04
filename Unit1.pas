@@ -462,16 +462,21 @@ DBGrid4.Visible := true;
 Splitter3.Visible := true;
 end;
 
+procedure TAUMaloiPrimorski.FormCanResize(Sender: TObject; var NewWidth,
+  NewHeight: Integer; var Resize: Boolean);
+begin
+  if (Left > 0) or (Top > 0) then begin
+    winLeft := Left;
+    winTop := Top;
+    winWidth := Width;
+    winHeight := Height;
+  end;
+end;
+
 procedure TAUMaloiPrimorski.FormCreate(Sender: TObject);
 var Ini: TIniFile;
 
 begin
-
-//HackGrid := THackGrid(DBGrid1);
-//HackGrid := THackGrid(DBGrid2);
-//HackGrid := THackGrid(DBGrid3);
-//HackGrid := THackGrid(DBGrid4);
-//HackDataLink := THackDataLink(HackGrid.DataLink);
 DBGrid1.Height := 200;
 DBGrid2.Height := 200;
 DBGrid3.Height := 200;
@@ -564,8 +569,6 @@ Ini := TIniFile.Create(ExtractFilePath(Application.ExeName)+'Config.ini');
   end;
 end;
 end;
-
-
 
 
 procedure TAUMaloiPrimorski.FormClose(Sender: TObject; var Action: TCloseAction);
