@@ -265,3 +265,11 @@ begin
 Form2.Caption:='Изменить запись [Электричество]';
 Form2.Show;
 end;
+
+procedure TAUMaloiPrimorski.N2Click(Sender: TObject);
+begin
+        if AUMaloiPrimorski.ADOQuery1.Modified then AUMaloiPrimorski.ADOQuery1.Post;
+        if AUMaloiPrimorski.ADOQueryElectro.Modified then AUMaloiPrimorski.ADOQueryElectro.Post;
+        if AUMaloiPrimorski.ADOQueryFinances.Modified then AUMaloiPrimorski.ADOQueryFinances.Post;
+        if AUMaloiPrimorski.ADOQuerySpend.Modified then AUMaloiPrimorski.ADOQuerySpend.Post;
+end;
