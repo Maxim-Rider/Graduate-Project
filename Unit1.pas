@@ -479,9 +479,41 @@ DBGrid4.Height := 200;
 (DBGrid4.DataSource.DataSet.Fields[3] as TNumericField).DisplayFormat := '0.00 €';
 N10.Caption:='Добавить запись [Доп.финансы]';
 N11.Caption:='Изменить запись [Доп.финансы]';
+//---------------------------------------//
+//загрузка настроек checkbox-ов
+ Ini := TIniFile.Create(ExtractFilePath(ParamStr(0))+'Config.ini');
+ try
+   CheckBox1.Checked := Ini.ReadBool('CheckBox1', 'Checked', False);
+   CheckBox2.Checked := Ini.ReadBool('CheckBox2', 'Checked', False);
+   CheckBox3.Checked := Ini.ReadBool('CheckBox3', 'Checked', False);
+   if AUMaloiPrimorski.CheckBox1.Checked = false then
+    DBGrid2.Visible := false;
+    Splitter1.Visible := false;
+    Splitter2.Visible := false;
+   if AUMaloiPrimorski.CheckBox1.Checked = true then
+    DBGrid2.Visible := true;
+    Splitter1.Visible := true;
+    Splitter2.Visible := true;
 
+   if AUMaloiPrimorski.CheckBox2.Checked = false then
+    DBGrid3.Visible := false;
+    Splitter1.Visible := false;
+    Splitter2.Visible := false;
+   if AUMaloiPrimorski.CheckBox2.Checked = true then
+    DBGrid3.Visible := true;
+    Splitter1.Visible := true;
+    Splitter2.Visible := true;
 
-
+   if AUMaloiPrimorski.CheckBox3.Checked = false then
+    DBGrid4.Visible := false;
+   Splitter3.Visible := false;
+   if AUMaloiPrimorski.CheckBox3.Checked = true then
+    DBGrid4.Visible := true;
+    Splitter3.Visible := true;
+ finally
+   Ini.Free;
+ end;
+ 
 //загрузка размеров окна приложения
 //Ini := TIniFile.Create(ExtractFilePath(Application.ExeName) + 'WindowSettings.ini');
 Ini := TIniFile.Create(ExtractFilePath(Application.ExeName) + 'Config.ini');
@@ -510,6 +542,16 @@ procedure TAUMaloiPrimorski.FormClose(Sender: TObject; var Action: TCloseAction)
 var
   Ini: TIniFile;
 begin   
+//сохранение настроек checkbox-ов
+//Ini := TIniFile.Create(ExtractFilePath(ParamStr(0))+'CheckBoxSettings.ini');
+Ini := TIniFile.Create(ExtractFilePath(ParamStr(0))+'Config.ini');
+ try
+   Ini.WriteBool('CheckBox1', 'Checked', CheckBox1.Checked);
+   Ini.WriteBool('CheckBox2', 'Checked', CheckBox2.Checked);
+   Ini.WriteBool('CheckBox3', 'Checked', CheckBox3.Checked);
+ finally
+   Ini.Free;
+ end;
 //сохранение настроек окна приложения
 //Ini := TIniFile.Create(ExtractFilePath(Application.ExeName) + 'WindowSettings.ini');
 Ini := TIniFile.Create(ExtractFilePath(Application.ExeName) + 'Config.ini');
