@@ -613,3 +613,38 @@ CopyFile(PChar(put), PChar('DataBaseCopy.mdb'),false);
 MessageDlg('Копирование завершено!',mtInformation, [mbOk], 0);
 end;
 end;
+
+procedure TAUMaloiPrimorski.N19Click(Sender: TObject);
+begin
+if MessageBox(Handle, 'Вы действительно хотите удалить все записи?',  'Запрос на удаление',(MB_YESNO+MB_ICONQUESTION))=idYes
+then begin
+
+With ADOQueryElectro do begin
+SQL.Clear;
+SQL.Text :='DELETE * FROM [Электричество]';
+Prepared :=True;
+ExecSQL;
+
+
+With ADOQueryFinances do
+SQL.Clear;
+SQL.Text :='DELETE * FROM [Финансы]';
+Prepared :=True;
+ExecSQL;
+
+
+With ADOQuerySpend do
+SQL.Clear;
+SQL.Text :='DELETE * FROM [Расходы]';
+Prepared :=True;
+ExecSQL;
+N18.Enabled := False;
+end;
+
+end;
+ADOQuerySpend.Active:=False;
+ADOQuerySpend.SQL.Clear;
+ADOQuerySpend.SQL.Text :='SELECT * FROM [Расходы]';
+ADOQuerySpend.ExecSQL;
+ADOQuerySpend.Active:=True;
+end;
