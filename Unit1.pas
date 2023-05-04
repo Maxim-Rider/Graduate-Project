@@ -713,6 +713,49 @@ with THackGrid(Sender), Canvas do
   end;
   w := 5+DBGrid2.Canvas.TextExtent(Column.Field.DisplayText).cx;
   if w>column.Width then Column.Width := w;
+
+  if Column.FieldName = 'Примечание' then
+    if (AUMaloiPrimorski.ADOQueryElectro.FieldByName('Color').AsString='Красный') then
+      begin
+        DBGrid2.Canvas.Font.Color := clRed;
+        DBGrid2.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+        DBGrid2.Canvas.Font.Color := holdColor;
+        DBGrid2.Update;
+      end;
+  if Column.FieldName = 'Примечание' then
+    if (AUMaloiPrimorski.ADOQueryElectro.FieldByName('Color').AsString='Чёрный') then
+      begin
+        DBGrid2.Canvas.Font.Color := clBlack;
+        DBGrid2.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+        DBGrid2.Canvas.Font.Color := holdColor;
+        DBGrid2.Update;
+      end;
+  if Column.FieldName = 'Примечание' then
+    if (AUMaloiPrimorski.ADOQueryElectro.FieldByName('Color').AsString='Зелёный') then
+      begin
+        DBGrid2.Canvas.Font.Color := clGreen;
+        DBGrid2.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+        DBGrid2.Canvas.Font.Color := holdColor;
+        DBGrid2.Update;
+      end;
+  if Column.FieldName = 'Примечание' then
+    if (AUMaloiPrimorski.ADOQueryElectro.FieldByName('Color').AsString='Синий') then
+      begin
+        DBGrid2.Canvas.Font.Color := clBlue;
+        DBGrid2.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+        DBGrid2.Canvas.Font.Color := holdColor;
+        DBGrid2.Update;
+      end;
+  if Column.FieldName = 'Примечание' then
+    if (AUMaloiPrimorski.ADOQueryElectro.FieldByName('Color').AsString='Жирный') then
+      begin
+        DBGrid2.Canvas.Font.Color := clBlack;
+        DBGrid2.Canvas.Font.Style:=[fsBold];
+        DBGrid2.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+        DBGrid2.Canvas.Font.Color := holdColor;
+        DBGrid2.Update;
+      end;
+
 end;
 
 //автоматический подгон длины поля под текст 
@@ -735,6 +778,49 @@ with THackGrid(Sender), Canvas do
   end;
   w := 5+DBGrid3.Canvas.TextExtent(Column.Field.DisplayText).cx;
   if w>column.Width then Column.Width := w;
+
+  if Column.FieldName = 'Примечание' then
+    if (AUMaloiPrimorski.ADOQueryFinances.FieldByName('Color').AsString='Красный') then
+      begin
+        DBGrid3.Canvas.Font.Color := clRed;
+        DBGrid3.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+        DBGrid3.Canvas.Font.Color := holdColor;
+        DBGrid3.Update;
+      end;
+  if Column.FieldName = 'Примечание' then
+    if (AUMaloiPrimorski.ADOQueryFinances.FieldByName('Color').AsString='Чёрный') then
+      begin
+        DBGrid3.Canvas.Font.Color := clBlack;
+        DBGrid3.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+        DBGrid3.Canvas.Font.Color := holdColor;
+        DBGrid3.Update;
+      end;
+  if Column.FieldName = 'Примечание' then
+    if (AUMaloiPrimorski.ADOQueryFinances.FieldByName('Color').AsString='Зелёный') then
+      begin
+        DBGrid3.Canvas.Font.Color := clGreen;
+        DBGrid3.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+        DBGrid3.Canvas.Font.Color := holdColor;
+        DBGrid3.Update;
+      end;
+  if Column.FieldName = 'Примечание' then
+    if (AUMaloiPrimorski.ADOQueryFinances.FieldByName('Color').AsString='Синий') then
+      begin
+        DBGrid3.Canvas.Font.Color := clBlue;
+        DBGrid3.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+        DBGrid3.Canvas.Font.Color := holdColor;
+        DBGrid3.Update;
+      end;
+  if Column.FieldName = 'Примечание' then
+    if (AUMaloiPrimorski.ADOQueryFinances.FieldByName('Color').AsString='Жирный') then
+      begin
+        DBGrid3.Canvas.Font.Color := clBlack;
+        DBGrid3.Canvas.Font.Style:=[fsBold];
+        DBGrid3.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+        DBGrid3.Canvas.Font.Color := holdColor;
+        DBGrid3.Update;
+      end;
+
 end;
 
 //автоматический подгон длины поля под текст 
@@ -757,4 +843,47 @@ with THackGrid(Sender), Canvas do
   end;
   w := 5+DBGrid4.Canvas.TextExtent(Column.Field.DisplayText).cx;
   if w>column.Width then Column.Width := w;
+
+  if Column.FieldName = 'Примечание' then
+    if (AUMaloiPrimorski.ADOQuerySpend.FieldByName('Color').AsString='Красный') then
+      begin
+        DBGrid4.Canvas.Font.Color := clRed;
+        DBGrid4.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+        DBGrid4.Canvas.Font.Color := holdColor;
+        DBGrid4.Update;
+      end;
+  if Column.FieldName = 'Примечание' then
+    if (AUMaloiPrimorski.ADOQuerySpend.FieldByName('Color').AsString='Чёрный') then
+      begin
+        DBGrid4.Canvas.Font.Color := clBlack;
+        DBGrid4.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+        DBGrid4.Canvas.Font.Color := holdColor;
+        DBGrid4.Update;
+      end;
+  if Column.FieldName = 'Примечание' then
+    if (AUMaloiPrimorski.ADOQuerySpend.FieldByName('Color').AsString='Зелёный') then
+      begin
+        DBGrid4.Canvas.Font.Color := clGreen;
+        DBGrid4.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+        DBGrid4.Canvas.Font.Color := holdColor;
+        DBGrid4.Update;
+      end;
+  if Column.FieldName = 'Примечание' then
+    if (AUMaloiPrimorski.ADOQuerySpend.FieldByName('Color').AsString='Синий') then
+      begin
+        DBGrid4.Canvas.Font.Color := clBlue;
+        DBGrid4.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+        DBGrid4.Canvas.Font.Color := holdColor;
+        DBGrid4.Update;
+      end;
+  if Column.FieldName = 'Примечание' then
+    if (AUMaloiPrimorski.ADOQuerySpend.FieldByName('Color').AsString='Жирный') then
+      begin
+        DBGrid4.Canvas.Font.Color := clBlack;
+        DBGrid4.Canvas.Font.Style:=[fsBold];
+        DBGrid4.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+        DBGrid4.Canvas.Font.Color := holdColor;
+        DBGrid4.Update;
+      end;
+
 end;
