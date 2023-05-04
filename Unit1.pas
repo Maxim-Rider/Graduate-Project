@@ -202,3 +202,66 @@ implementation
 
 uses Unit5, Unit2, Unit3, Unit6;
 var put:string;
+
+
+procedure TAUMaloiPrimorski.ADOQuery1УлицаGetText(Sender: TField; var Text: string;
+  DisplayText: Boolean);
+begin
+      Text := Sender.AsString;
+end;
+
+
+procedure TAUMaloiPrimorski.ADOQueryElectroПримечаниеGetText(
+  Sender: TField; var Text: string; DisplayText: Boolean);
+begin
+     Text := Sender.AsString;
+end;
+
+
+procedure TAUMaloiPrimorski.N10Click(Sender: TObject);
+begin
+Form3.Caption:='Добавить запись [Доп.финансы]';
+AUMaloiPrimorski.ADOQueryFinances.Append;
+Form3.Show;
+end;
+
+procedure TAUMaloiPrimorski.N11Click(Sender: TObject);
+begin
+Form3.Caption:='Изменить запись [Доп.финансы]';
+Form3.Show;
+end;
+
+
+procedure TAUMaloiPrimorski.N21Click(Sender: TObject);
+begin
+Form6.Caption:='Изменить запись [Расходы]';
+Form6.Show;
+end;
+
+           
+procedure TAUMaloiPrimorski.N3Click(Sender: TObject);
+begin
+BDForm.Show;
+end;
+
+
+procedure TAUMaloiPrimorski.N5Click(Sender: TObject);
+begin
+Form6.Caption:='Добавить запись [Расходы]';
+AUMaloiPrimorski.ADOQuerySpend.Append;
+Form6.Show;
+end;
+
+
+procedure TAUMaloiPrimorski.N7Click(Sender: TObject);
+begin
+Form2.Caption:='Добавить запись [Электричество]';
+AUMaloiPrimorski.ADOQueryElectro.Append;
+Form2.Show;
+end;
+
+procedure TAUMaloiPrimorski.N8Click(Sender: TObject);
+begin
+Form2.Caption:='Изменить запись [Электричество]';
+Form2.Show;
+end;
