@@ -648,3 +648,21 @@ ADOQuerySpend.SQL.Text :='SELECT * FROM [Расходы]';
 ADOQuerySpend.ExecSQL;
 ADOQuerySpend.Active:=True;
 end;
+
+procedure TAUMaloiPrimorski.N23Click(Sender: TObject);
+var searchResult : TSearchRec;
+begin
+if MessageBox(Handle, 'Вы уверены, что хотите восстановить настройки по умолчанию?',
+    PChar(Caption), MB_ICONQUESTION or MB_YESNO) = ID_YES then begin
+  if FindFirst('*.ini', faAnyFile, searchResult) = 0 then
+  begin
+    repeat
+      DeleteFile(searchResult.Name);
+    until FindNext(searchResult) <> 0;
+    FindClose(searchResult);
+    MessageDlg('Настройки сброшены! Перезагрузите программу.',mtInformation, [mbOk], 0);
+    AUMaloiPrimorski.Close;
+  end;
+end;
+
+end;
