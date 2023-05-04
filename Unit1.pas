@@ -943,3 +943,34 @@ with AUMaloiPrimorski.ADOQueryFinances do
   end;
 
 end;
+
+
+procedure TAUMaloiPrimorski.DBEdit1Change(Sender: TObject);
+var h1, h2:string;
+begin
+h1:=''+AUMaloiPrimorski.DBEdit1.Text;
+h2:=QuotedStr(h1);
+with AUMaloiPrimorski.ADOQueryElectro do
+  begin
+  Close;
+  SQL.Clear;
+  SQL.Add('select * from Электричество where id_dom like '+h2+' order by id');
+  Open;
+  end;
+end;
+
+procedure TAUMaloiPrimorski.DBEdit3Change(Sender: TObject);
+var h3, h4:string;
+begin
+h3:=''+AUMaloiPrimorski.DBEdit3.Text;
+h4:=QuotedStr(h3);
+with AUMaloiPrimorski.ADOQueryFinances do
+  begin
+  Close;
+  SQL.Clear;
+  SQL.Add('select * from Финансы where id_dom like '+h4+' order by id');
+  Open;
+  end;
+end;
+
+end.
