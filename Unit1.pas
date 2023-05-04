@@ -197,6 +197,8 @@ var
   Ini: TIniFile;
   CheckBox1: TCheckBox;
   CheckBox2: TCheckBox;
+  HackGrid: THackGrid;
+  HackDataLink: THackDataLink;
 implementation
 
 {$R *.dfm}
@@ -676,6 +678,17 @@ Var
   Row: Integer;
   IRect: TRect;
 begin
+with THackGrid(Sender), Canvas do
+  begin
+    if (DataLink.ActiveRecord = Row - FixedRows) then
+    begin
+      Brush.Color := clMoneyGreen;
+    end
+    else
+      Font.Style := Font.Style - [fsBold];
+      Font.Color := clBlack;
+    TDBGrid(Sender).DefaultDrawColumnCell(Rect, DataCol, Column, State);
+  end;
   w := 5+DBGrid1.Canvas.TextExtent(Column.Field.DisplayText).cx;
   if w>column.Width then Column.Width := w;
 end;
@@ -685,8 +698,20 @@ procedure TAUMaloiPrimorski.DBGrid2DrawColumnCell(Sender: TObject;
   const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
 Var
   w : Integer;
+  holdColor: TColor;
 begin
-  w := 5+DBGrid1.Canvas.TextExtent(Column.Field.DisplayText).cx;
+with THackGrid(Sender), Canvas do
+  begin
+    if (DataLink.ActiveRecord = Row - FixedRows) then
+    begin
+      Brush.Color := clMoneyGreen;
+    end
+    else
+      Font.Style := Font.Style - [fsBold];
+      Font.Color := clBlack;
+    TDBGrid(Sender).DefaultDrawColumnCell(Rect, DataCol, Column, State);
+  end;
+  w := 5+DBGrid2.Canvas.TextExtent(Column.Field.DisplayText).cx;
   if w>column.Width then Column.Width := w;
 end;
 
@@ -695,8 +720,20 @@ procedure TAUMaloiPrimorski.DBGrid3DrawColumnCell(Sender: TObject;
   const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
 Var
   w : Integer;
+  holdColor: TColor;
 begin
-  w := 5+DBGrid2.Canvas.TextExtent(Column.Field.DisplayText).cx;
+with THackGrid(Sender), Canvas do
+  begin
+    if (DataLink.ActiveRecord = Row - FixedRows) then
+    begin
+      Brush.Color := clMoneyGreen;
+    end
+    else
+      Font.Style := Font.Style - [fsBold];
+      Font.Color := clBlack;
+    TDBGrid(Sender).DefaultDrawColumnCell(Rect, DataCol, Column, State);
+  end;
+  w := 5+DBGrid3.Canvas.TextExtent(Column.Field.DisplayText).cx;
   if w>column.Width then Column.Width := w;
 end;
 
@@ -705,7 +742,19 @@ procedure TAUMaloiPrimorski.DBGrid4DrawColumnCell(Sender: TObject;
   const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
 Var
   w : Integer;
+  holdColor: TColor;
 begin
-  w := 5+DBGrid3.Canvas.TextExtent(Column.Field.DisplayText).cx;
+with THackGrid(Sender), Canvas do
+  begin
+    if (DataLink.ActiveRecord = Row - FixedRows) then
+    begin
+      Brush.Color := clMoneyGreen;
+    end
+    else
+      Font.Style := Font.Style - [fsBold];
+      Font.Color := clBlack;
+    TDBGrid(Sender).DefaultDrawColumnCell(Rect, DataCol, Column, State);
+  end;
+  w := 5+DBGrid4.Canvas.TextExtent(Column.Field.DisplayText).cx;
   if w>column.Width then Column.Width := w;
 end;
