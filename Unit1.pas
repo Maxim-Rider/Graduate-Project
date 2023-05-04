@@ -513,6 +513,25 @@ N11.Caption:='Изменить запись [Доп.финансы]';
  finally
    Ini.Free;
  end;
+
+//загрузка пути к БД
+//Ini:=TIniFile.Create(ExtractFilePath(ParamStr(0))+'DataBaseSettings.ini');
+Ini:=TIniFile.Create(ExtractFilePath(ParamStr(0))+'Config.ini');
+put:=Ini.ReadString('Путь к БД','ConStr','');
+Ini.Free;
+
+if put='' then MessageDlg('Файл БД не найден.',mtError, [mbOK],0)
+else
+
+begin
+AUMaloiPrimorski.ADOConnection1.ConnectionString:='Provider=Microsoft.Jet.OLEDB.4.0;Data Source='+put+';Persist Security Info=False;';
+AUMaloiPrimorski.ADOConnection1.Open();
+AUMaloiPrimorski.ADOConnection1.Connected:=True;
+AUMaloiPrimorski.ADOQuery1.Active:=True;
+AUMaloiPrimorski.ADOQueryElectro.Active:=True;
+AUMaloiPrimorski.ADOQueryFinances.Active:=True;
+AUMaloiPrimorski.ADOQuerySpend.Active:=True;
+
 //загрузка размеров окна приложения
 //Ini := TIniFile.Create(ExtractFilePath(Application.ExeName) + 'WindowSettings.ini');
 Ini := TIniFile.Create(ExtractFilePath(Application.ExeName) + 'Config.ini');
