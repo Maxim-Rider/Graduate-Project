@@ -667,6 +667,19 @@ end;
 
 end;
 
+//автоматический подгон длины поля под текст
+procedure TAUMaloiPrimorski.DBGrid1DrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
+Var
+  w : Integer;
+  holdColor: TColor;
+  Row: Integer;
+  IRect: TRect;
+begin
+  w := 5+DBGrid1.Canvas.TextExtent(Column.Field.DisplayText).cx;
+  if w>column.Width then Column.Width := w;
+end;
+
 //автоматический подгон длины поля под текст 
 procedure TAUMaloiPrimorski.DBGrid2DrawColumnCell(Sender: TObject;
   const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
