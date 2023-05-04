@@ -421,3 +421,40 @@ procedure TAUMaloiPrimorski.Button2Click(Sender: TObject);
 begin
 Label4.Caption := '0 €'
 end;
+
+
+procedure TAUMaloiPrimorski.CheckBox1Click(Sender: TObject);
+begin
+if AUMaloiPrimorski.CheckBox1.Checked = false then
+DBGrid2.Visible := false;
+Splitter1.Visible := false;
+Splitter2.Visible := false;
+if AUMaloiPrimorski.CheckBox1.Checked = true then
+DBGrid2.Visible := true;
+Splitter1.Visible := true;
+Splitter2.Visible := true;
+end;
+
+procedure TAUMaloiPrimorski.CheckBox2Click(Sender: TObject);
+begin
+if AUMaloiPrimorski.CheckBox2.Checked = false then
+DBGrid3.Visible := false;
+Splitter2.Visible := false;
+Splitter1.Visible := false;
+
+if AUMaloiPrimorski.CheckBox2.Checked = true then
+DBGrid3.Visible := true;
+Splitter2.Visible := true;
+Splitter1.Visible := true;
+
+end;
+
+procedure TAUMaloiPrimorski.CheckBox3Click(Sender: TObject);
+begin
+if AUMaloiPrimorski.CheckBox3.Checked = false then
+DBGrid4.Visible := false;
+Splitter3.Visible := false;
+if AUMaloiPrimorski.CheckBox3.Checked = true then
+DBGrid4.Visible := true;
+Splitter3.Visible := true;
+end;
