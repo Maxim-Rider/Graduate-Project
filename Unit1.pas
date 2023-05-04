@@ -666,3 +666,33 @@ if MessageBox(Handle, 'Вы уверены, что хотите восстано
 end;
 
 end;
+
+//автоматический подгон длины поля под текст 
+procedure TAUMaloiPrimorski.DBGrid2DrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
+Var
+  w : Integer;
+begin
+  w := 5+DBGrid1.Canvas.TextExtent(Column.Field.DisplayText).cx;
+  if w>column.Width then Column.Width := w;
+end;
+
+//автоматический подгон длины поля под текст 
+procedure TAUMaloiPrimorski.DBGrid3DrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
+Var
+  w : Integer;
+begin
+  w := 5+DBGrid2.Canvas.TextExtent(Column.Field.DisplayText).cx;
+  if w>column.Width then Column.Width := w;
+end;
+
+//автоматический подгон длины поля под текст 
+procedure TAUMaloiPrimorski.DBGrid4DrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
+Var
+  w : Integer;
+begin
+  w := 5+DBGrid3.Canvas.TextExtent(Column.Field.DisplayText).cx;
+  if w>column.Width then Column.Width := w;
+end;
