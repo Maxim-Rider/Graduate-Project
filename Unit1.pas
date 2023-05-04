@@ -358,3 +358,66 @@ currentDate := Now;
   MSWord.Selection.TypeText(#13#10);
   MSWord.Selection.TypeText(#13#10'Сальдо на ');
 end;
+
+
+//рассчёт суммы
+procedure TAUMaloiPrimorski.Button1Click(Sender: TObject);
+var s: real;
+    n: integer;
+    bm : TBookmark;
+begin
+   bm := ADOQuerySpend.GetBookmark;
+   ADOQuerySpend.DisableControls;
+//--------------------------------------------------------------------//
+  s:=0;
+ ADOQuerySpend.First;
+ s:=0;
+  for n:=1 to ADOQuerySpend.RecordCount do begin
+    s := s + ADOQuerySpend.FieldByName('Сумма').AsFloat;
+    ADOQuerySpend.Next;
+    Label4.Caption :=FloatToStr(s) + ' €';
+//---------------------------------------------------------------------//
+end;
+    if  ADOQuerySpend.BookmarkValid(bm) then  ADOQuerySpend.GotoBookmark(bm);
+    if    ADOQuerySpend.BookmarkValid(bm) then  ADOQuerySpend.FreeBookmark(bm);
+    ADOQuerySpend.EnableControls;
+end;
+
+
+procedure TAUMaloiPrimorski.Button6Click(Sender: TObject);
+var s: real;
+    n: integer;
+    bm : TBookmark;
+begin
+   bm := ADOQueryElectro.GetBookmark;
+   ADOQueryElectro.DisableControls;
+//--------------------------------------------------------------------//
+  s:=0;
+ ADOQueryElectro.First;
+ s:=0;
+  for n:=1 to ADOQueryElectro.RecordCount do begin
+    s := s + ADOQueryElectro.FieldByName('Сумма').AsFloat;
+    ADOQueryElectro.Next;
+    Label6.Caption :=FloatToStr(s) + ' €';
+//---------------------------------------------------------------------//
+end;
+    if  ADOQueryElectro.BookmarkValid(bm) then  ADOQueryElectro.GotoBookmark(bm);
+    if    ADOQueryElectro.BookmarkValid(bm) then  ADOQueryElectro.FreeBookmark(bm);
+    ADOQueryElectro.EnableControls;
+end;
+
+procedure TAUMaloiPrimorski.FormShow(Sender: TObject);
+begin
+Label4.Caption := '0 €';
+Label6.Caption := '0 €';
+end;
+
+procedure TAUMaloiPrimorski.Button7Click(Sender: TObject);
+begin
+Label6.Caption := '0 €'
+end;
+
+procedure TAUMaloiPrimorski.Button2Click(Sender: TObject);
+begin
+Label4.Caption := '0 €'
+end;
