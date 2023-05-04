@@ -890,3 +890,56 @@ with THackGrid(Sender), Canvas do
       end;
 
 end;
+
+procedure TAUMaloiPrimorski.Edit1Change(Sender: TObject);
+//var help1, help2:string;
+begin
+if AUMaloiPrimorski.Edit1.Text='' then AUMaloiPrimorski.ADOQuery1.Filtered:=False
+else
+try
+ begin
+   AUMaloiPrimorski.ADOQuery1.Filtered:=False;
+   AUMaloiPrimorski.ADOQuery1.Filter:='[Дом] ='+AUMaloiPrimorski.Edit1.Text;
+   AUMaloiPrimorski.ADOQuery1.Filtered:=True;
+ end;
+except
+  ShowMessage('В поиск по дому можно писать только число!');
+  AUMaloiPrimorski.Edit1.Clear;
+end;
+
+    (*
+help1:='%'+AUMaloiPrimorski.Edit1.Text+'%';
+help2:=QuotedStr(help1);
+with AUMaloiPrimorski.ADOQuery1 do
+  begin
+  Close;
+  SQL.Clear;
+  SQL.Add('select * from Таблица1 where [Фамилия] like'+help2+' or [Дом] like'+help2+' order by Дом');
+  Open;
+  end;  *)
+
+end;
+
+procedure TAUMaloiPrimorski.Edit2Change(Sender: TObject);
+var help3, help4:string;
+
+begin
+help3:='%'+AUMaloiPrimorski.Edit2.Text+'%';
+help4:=QuotedStr(help3);
+ with AUMaloiPrimorski.ADOQueryElectro do
+  begin
+  Close;
+  SQL.Clear;
+  SQL.Add('select * from Электричество where [Дата оплаты] like '+help4+' order by id');
+  Open;
+  end;
+
+with AUMaloiPrimorski.ADOQueryFinances do
+  begin
+  Close;
+  SQL.Clear;
+  SQL.Add('select * from Финансы where [Дата] like '+help4+' order by id');
+  Open;
+  end;
+
+end;
