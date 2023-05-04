@@ -194,6 +194,7 @@ type
  
 var
   AUMaloiPrimorski: TAUMaloiPrimorski;
+  Ini: TIniFile;
   CheckBox1: TCheckBox;
   CheckBox2: TCheckBox;
 implementation
@@ -457,4 +458,68 @@ Splitter3.Visible := false;
 if AUMaloiPrimorski.CheckBox3.Checked = true then
 DBGrid4.Visible := true;
 Splitter3.Visible := true;
+end;
+
+procedure TAUMaloiPrimorski.FormCreate(Sender: TObject);
+var Ini: TIniFile;
+
+begin
+
+//HackGrid := THackGrid(DBGrid1);
+//HackGrid := THackGrid(DBGrid2);
+//HackGrid := THackGrid(DBGrid3);
+//HackGrid := THackGrid(DBGrid4);
+//HackDataLink := THackDataLink(HackGrid.DataLink);
+DBGrid1.Height := 200;
+DBGrid2.Height := 200;
+DBGrid3.Height := 200;
+DBGrid4.Height := 200;
+//DBGrid2.Columns[7].Title.Caption := 'Гараж, показания счётчика';
+(DBGrid2.DataSource.DataSet.Fields[9] as TNumericField).DisplayFormat := '0.00 €';
+(DBGrid4.DataSource.DataSet.Fields[3] as TNumericField).DisplayFormat := '0.00 €';
+N10.Caption:='Добавить запись [Доп.финансы]';
+N11.Caption:='Изменить запись [Доп.финансы]';
+
+
+
+//загрузка размеров окна приложения
+//Ini := TIniFile.Create(ExtractFilePath(Application.ExeName) + 'WindowSettings.ini');
+Ini := TIniFile.Create(ExtractFilePath(Application.ExeName) + 'Config.ini');
+  try
+    Left := Ini.ReadInteger('WINDOW', 'Left', Left);
+    Top := Ini.ReadInteger('WINDOW', 'Top', Top);
+    Width := Ini.ReadInteger('WINDOW', 'Width', Width);
+    Height := Ini.ReadInteger('WINDOW', 'Height', Height);
+    winLeft := Left;
+    winTop := Top;
+    winWidth := Width;
+    winHeight := Height;
+    if Ini.ReadBool('WINDOW', 'Maximized', False) then
+      WindowState := wsMaximized
+  finally
+    Ini.Free;
+  end;
+
+end;
+end;
+
+
+
+
+procedure TAUMaloiPrimorski.FormClose(Sender: TObject; var Action: TCloseAction);
+var
+  Ini: TIniFile;
+begin   
+//сохранение настроек окна приложения
+//Ini := TIniFile.Create(ExtractFilePath(Application.ExeName) + 'WindowSettings.ini');
+Ini := TIniFile.Create(ExtractFilePath(Application.ExeName) + 'Config.ini');
+  try
+    Ini.WriteInteger('WINDOW', 'Left', winLeft);
+    Ini.WriteInteger('WINDOW', 'Top', winTop);
+    Ini.WriteInteger('WINDOW', 'Width', winWidth);
+    Ini.WriteInteger('WINDOW', 'Height', winHeight);
+    Ini.WriteBool('WINDOW', 'Maximized', WindowState = wsMaximized);
+  finally
+    Ini.Free;
+  end;
 end;
