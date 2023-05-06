@@ -171,7 +171,7 @@ type
     procedure DBGrid4DblClick(Sender: TObject);
     procedure ADOQueryElectroBeforeScroll(DataSet: TDataSet);
     procedure ADOQueryFinancesBeforeScroll(DataSet: TDataSet);
-    procedure ADOQuerySpendBeforeScroll(DataSet: TDataSet);
+    procedure ADOQuerySpendBeforeScroll(DataSet: TDataSet);     
     procedure Button7Click(Sender: TObject);
     procedure Button6Click(Sender: TObject);
 
@@ -993,6 +993,73 @@ end;
 procedure TAUMaloiPrimorski.Button4Click(Sender: TObject);
 begin
 N18.Enabled := False;
+end;
+
+procedure TAUMaloiPrimorski.N13Click(Sender: TObject);
+begin
+if MessageBox(Handle, 'Вы действительно хотите выйти из программы?',  'Выход',(MB_YESNO+MB_ICONQUESTION))=idYes
+then begin
+AUMaloiPrimorski.Close;
+end;
+end;
+
+//не используется, тоже подгоняет длину под текст
+procedure TAUMaloiPrimorski.FormActivate(Sender: TObject);
+Var
+  i : Integer;
+begin
+  for I := 0 to DBGrid2.Columns.Count - 1 do
+    DBGrid2.Columns[i].Width := 5 + DBGrid2.Canvas.TextWidth(DBGrid2.Columns[i].title.caption);
+    DBGrid3.Columns[i].Width := 5 + DBGrid3.Canvas.TextWidth(DBGrid3.Columns[i].title.caption);
+end;
+
+procedure TAUMaloiPrimorski.DBGrid1DblClick(Sender: TObject);
+begin     // Отключаем  RowSelect
+//DBGrid1.Options := DBGrid1.Options - [dgRowSelect];
+//DBGrid1.Options := DBGrid1.Options + [dgEditing];
+end;
+
+procedure TAUMaloiPrimorski.ADOQuery1BeforeScroll(DataSet: TDataSet);
+begin   // включаем заново  RowSelect
+//DBGrid1.Options := DBGrid1.Options + [dgRowSelect];
+//DBGrid1.Options := DBGrid1.Options - [dgEditing];
+end;
+
+procedure TAUMaloiPrimorski.DBGrid2DblClick(Sender: TObject);
+begin     // Отключаем  RowSelect
+//DBGrid2.Options := DBGrid2.Options - [dgRowSelect];
+//DBGrid2.Options := DBGrid2.Options + [dgEditing];
+end;
+
+
+procedure TAUMaloiPrimorski.ADOQueryElectroBeforeScroll(DataSet: TDataSet);
+begin    // включаем заново  RowSelect
+//DBGrid2.Options := DBGrid2.Options + [dgRowSelect];
+//DBGrid2.Options := DBGrid2.Options - [dgEditing];
+end;
+
+procedure TAUMaloiPrimorski.DBGrid3DblClick(Sender: TObject);
+begin     // Отключаем  RowSelect
+//DBGrid3.Options := DBGrid3.Options - [dgRowSelect];
+//DBGrid3.Options := DBGrid3.Options + [dgEditing];
+end;
+
+procedure TAUMaloiPrimorski.ADOQueryFinancesBeforeScroll(DataSet: TDataSet);
+begin    // включаем заново  RowSelect
+//DBGrid3.Options := DBGrid3.Options + [dgRowSelect];
+//DBGrid3.Options := DBGrid3.Options - [dgEditing];
+end;
+
+procedure TAUMaloiPrimorski.DBGrid4DblClick(Sender: TObject);
+begin     // Отключаем  RowSelect
+//DBGrid4.Options := DBGrid4.Options - [dgRowSelect];
+//DBGrid4.Options := DBGrid4.Options + [dgEditing];
+end;
+
+procedure TAUMaloiPrimorski.ADOQuerySpendBeforeScroll(DataSet: TDataSet);
+begin   // включаем заново  RowSelect
+//DBGrid4.Options := DBGrid4.Options + [dgRowSelect];
+//DBGrid4.Options := DBGrid4.Options - [dgEditing];
 end;
 
 end.
