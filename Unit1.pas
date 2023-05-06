@@ -527,7 +527,7 @@ Ini:=TIniFile.Create(ExtractFilePath(ParamStr(0))+'Config.ini');
 put:=Ini.ReadString('Путь к БД','ConStr','');
 Ini.Free;
 
-if put='' then MessageDlg('Файл БД не найден.',mtError, [mbOK],0)
+if put='' then MessageDlg('Файл БД не найден.' + sLineBreak + 'Чтобы открыть базу данных, нажмите "Файл" -> "Открыть базу данных" и выберите её из папки.',mtError, [mbOK],0)
 else
 
 begin
