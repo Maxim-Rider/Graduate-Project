@@ -206,21 +206,21 @@ implementation
 uses Unit5, Unit2, Unit3, Unit6;
 var put:string;
 
-
+//tabelis kuvatava teksti saamine / получение текста для отображения в таблице
 procedure TAUMaloiPrimorski.ADOQuery1УлицаGetText(Sender: TField; var Text: string;
   DisplayText: Boolean);
 begin
       Text := Sender.AsString;
 end;
 
-
+//tabelis kuvatava teksti saamine 2 / получение текста для отображения в таблице 2
 procedure TAUMaloiPrimorski.ADOQueryElectroПримечаниеGetText(
   Sender: TField; var Text: string; DisplayText: Boolean);
 begin
      Text := Sender.AsString;
 end;
 
-
+//akna pealkirja muutmine klõpsamisel ja rea lisamine / изменение названия заголовка окна при нажатии и добавление строки 1
 procedure TAUMaloiPrimorski.N10Click(Sender: TObject);
 begin
 Form3.Caption:='Добавить запись [Доп.финансы]';
@@ -228,26 +228,27 @@ AUMaloiPrimorski.ADOQueryFinances.Append;
 Form3.Show;
 end;
 
+//akna pealkirja muutmine klõpsamisel ja rea lisamine 2 / изменение названия заголовка окна при нажатии и добавление строки 2
 procedure TAUMaloiPrimorski.N11Click(Sender: TObject);
 begin
 Form3.Caption:='Изменить запись [Доп.финансы]';
 Form3.Show;
 end;
 
-
+//akna pealkirja muutmine klõpsamisel ja rea lisamine 3 / изменение названия заголовка окна при нажатии и добавление строки 3
 procedure TAUMaloiPrimorski.N21Click(Sender: TObject);
 begin
 Form6.Caption:='Изменить запись [Расходы]';
 Form6.Show;
 end;
 
-           
+//vormi avamine, kui nupule vajutatakse / открытие формы при нажатии на кнопку      
 procedure TAUMaloiPrimorski.N3Click(Sender: TObject);
 begin
 BDForm.Show;
 end;
 
-
+//akna pealkirja muutmine klõpsamisel ja rea lisamine 4 / изменение названия заголовка окна при нажатии и добавление строки 4
 procedure TAUMaloiPrimorski.N5Click(Sender: TObject);
 begin
 Form6.Caption:='Добавить запись [Расходы]';
@@ -255,7 +256,7 @@ AUMaloiPrimorski.ADOQuerySpend.Append;
 Form6.Show;
 end;
 
-
+//akna pealkirja muutmine klõpsamisel ja rea lisamine 5 / изменение названия заголовка окна при нажатии и добавление строки 5
 procedure TAUMaloiPrimorski.N7Click(Sender: TObject);
 begin
 Form2.Caption:='Добавить запись [Электричество]';
@@ -263,12 +264,14 @@ AUMaloiPrimorski.ADOQueryElectro.Append;
 Form2.Show;
 end;
 
+//akna pealkirja muutmine klõpsamisel ja rea lisamine 6 / изменение названия заголовка окна при нажатии и добавление строки 6
 procedure TAUMaloiPrimorski.N8Click(Sender: TObject);
 begin
 Form2.Caption:='Изменить запись [Электричество]';
 Form2.Show;
 end;
 
+//salvestusnupp / кнопка сохранения данных
 procedure TAUMaloiPrimorski.N2Click(Sender: TObject);
 begin
         if AUMaloiPrimorski.ADOQuery1.Modified then AUMaloiPrimorski.ADOQuery1.Post;
@@ -277,7 +280,7 @@ begin
         if AUMaloiPrimorski.ADOQuerySpend.Modified then AUMaloiPrimorski.ADOQuerySpend.Post;
 end;
 
- //автоматическое создание счёта
+//automaatne konto loomine / автоматическое создание счёта 
 procedure TAUMaloiPrimorski.N16Click(Sender: TObject);
 var
   MSWord: Variant;
@@ -317,6 +320,7 @@ currentDate := Now;
 
 end;
 
+//automaatne konto loomine 2 / автоматическое создание счёта 2
 procedure TAUMaloiPrimorski.N17Click(Sender: TObject);
 var
   MSWord: Variant;
@@ -363,7 +367,7 @@ currentDate := Now;
 end;
 
 
-//рассчёт суммы
+//summa arvutamine / рассчёт суммы
 procedure TAUMaloiPrimorski.Button1Click(Sender: TObject);
 var s: real;
     n: integer;
@@ -386,7 +390,7 @@ end;
     ADOQuerySpend.EnableControls;
 end;
 
-
+//summa arvutamine 2 / рассчёт суммы 2
 procedure TAUMaloiPrimorski.Button6Click(Sender: TObject);
 var s: real;
     n: integer;
@@ -409,6 +413,7 @@ end;
     ADOQueryElectro.EnableControls;
 end;
 
+//seab programmi avamisel vaikeväärtused / при открытии программы задаёт значения по умолчанию
 procedure TAUMaloiPrimorski.FormShow(Sender: TObject);
 begin
 Label4.Caption := '0 €';
@@ -425,7 +430,7 @@ begin
 Label4.Caption := '0 €'
 end;
 
-
+//kontrollida programmis kuvatava "checkbox" staatust / проверка состояния checkbox для отображения
 procedure TAUMaloiPrimorski.CheckBox1Click(Sender: TObject);
 begin
 if AUMaloiPrimorski.CheckBox1.Checked = false then
@@ -438,6 +443,7 @@ Splitter1.Visible := true;
 Splitter2.Visible := true;
 end;
 
+//kontrollida programmis kuvatava "checkbox" staatust 2 / проверка состояния checkbox для отображения 2
 procedure TAUMaloiPrimorski.CheckBox2Click(Sender: TObject);
 begin
 if AUMaloiPrimorski.CheckBox2.Checked = false then
@@ -449,9 +455,9 @@ if AUMaloiPrimorski.CheckBox2.Checked = true then
 DBGrid3.Visible := true;
 Splitter2.Visible := true;
 Splitter1.Visible := true;
-
 end;
 
+//kontrollida programmis kuvatava "checkbox" staatust 3 / проверка состояния checkbox для отображения 3
 procedure TAUMaloiPrimorski.CheckBox3Click(Sender: TObject);
 begin
 if AUMaloiPrimorski.CheckBox3.Checked = false then
@@ -462,6 +468,7 @@ DBGrid4.Visible := true;
 Splitter3.Visible := true;
 end;
 
+//loeb akna positsiooni, mis tuleb kirjutada ini-faili / считывание положения окна для записи в ini файл
 procedure TAUMaloiPrimorski.FormCanResize(Sender: TObject; var NewWidth,
   NewHeight: Integer; var Resize: Boolean);
 begin
@@ -473,9 +480,9 @@ begin
   end;
 end;
 
+//seab vajadusel programmi avamisel vaikeväärtused / при открытии программый задаёт значения по умолчанию, если требуется
 procedure TAUMaloiPrimorski.FormCreate(Sender: TObject);
 var Ini: TIniFile;
-
 begin
 DBGrid1.Height := 200;
 DBGrid2.Height := 200;
@@ -487,7 +494,7 @@ DBGrid4.Height := 200;
 N10.Caption:='Добавить запись [Доп.финансы]';
 N11.Caption:='Изменить запись [Доп.финансы]';
 //---------------------------------------//
-//загрузка настроек checkbox-ов
+//"checkboxes" seadete laadimine / загрузка настроек checkbox-ов
  Ini := TIniFile.Create(ExtractFilePath(ParamStr(0))+'Config.ini');
  try
    CheckBox1.Checked := Ini.ReadBool('CheckBox1', 'Checked', False);
@@ -521,7 +528,7 @@ N11.Caption:='Изменить запись [Доп.финансы]';
    Ini.Free;
  end;
 
-//загрузка пути к БД
+//andmebaasi tee laadimine / загрузка пути к БД
 //Ini:=TIniFile.Create(ExtractFilePath(ParamStr(0))+'DataBaseSettings.ini');
 Ini:=TIniFile.Create(ExtractFilePath(ParamStr(0))+'Config.ini');
 put:=Ini.ReadString('Путь к БД','ConStr','');
@@ -539,7 +546,7 @@ AUMaloiPrimorski.ADOQueryElectro.Active:=True;
 AUMaloiPrimorski.ADOQueryFinances.Active:=True;
 AUMaloiPrimorski.ADOQuerySpend.Active:=True;
 
-//загрузка размеров окна приложения
+//rakenduse akna suuruse laadimine / загрузка размеров окна приложения
 //Ini := TIniFile.Create(ExtractFilePath(Application.ExeName) + 'WindowSettings.ini');
 Ini := TIniFile.Create(ExtractFilePath(Application.ExeName) + 'Config.ini');
   try
@@ -556,7 +563,7 @@ Ini := TIniFile.Create(ExtractFilePath(Application.ExeName) + 'Config.ini');
   finally
     Ini.Free;
   end;
-//загрузка настроек DBGrid-ов
+//DBGridid seadete laadimine / загрузка настроек DBGrid-ов
 //Ini := TIniFile.Create(ExtractFilePath(Application.ExeName)+'DBGridSettings.ini');
 Ini := TIniFile.Create(ExtractFilePath(Application.ExeName)+'Config.ini');
   try
@@ -570,12 +577,12 @@ Ini := TIniFile.Create(ExtractFilePath(Application.ExeName)+'Config.ini');
 end;
 end;
 
-
+//programmi sulgemisel käivitub skript / при закрытии программы запускает скрипт
 procedure TAUMaloiPrimorski.FormClose(Sender: TObject; var Action: TCloseAction);
 var
   Ini: TIniFile;
 begin   
-//сохранение настроек DBGrid-ов
+//DBGridid seadete salvestamine / сохранение настроек DBGrid-ов
 //Ini := TIniFile.Create(ExtractFilePath(ParamStr(0))+'DBGridSettings.ini');
 Ini := TIniFile.Create(ExtractFilePath(ParamStr(0))+'Config.ini');
   try
@@ -586,7 +593,7 @@ Ini := TIniFile.Create(ExtractFilePath(ParamStr(0))+'Config.ini');
   finally
   Ini.Free;
   end;
-//сохранение настроек checkbox-ов
+//"checkboxes" seadete salvestamine / сохранение настроек checkbox-ов
 //Ini := TIniFile.Create(ExtractFilePath(ParamStr(0))+'CheckBoxSettings.ini');
 Ini := TIniFile.Create(ExtractFilePath(ParamStr(0))+'Config.ini');
  try
@@ -596,7 +603,7 @@ Ini := TIniFile.Create(ExtractFilePath(ParamStr(0))+'Config.ini');
  finally
    Ini.Free;
  end;
-//сохранение настроек окна приложения
+//rakenduse akna seadete salvestamine / сохранение настроек окна приложения
 //Ini := TIniFile.Create(ExtractFilePath(Application.ExeName) + 'WindowSettings.ini');
 Ini := TIniFile.Create(ExtractFilePath(Application.ExeName) + 'Config.ini');
   try
@@ -610,6 +617,7 @@ Ini := TIniFile.Create(ExtractFilePath(Application.ExeName) + 'Config.ini');
   end;
 end;
 
+//luua andmebaasi kopeerimisnupp koos kinnitusega / создание кнопки копии базы данных с подтверждением
 procedure TAUMaloiPrimorski.N20Click(Sender: TObject);
 begin
 if MessageBox(Handle, 'Вы действительно хотите сделать копию текущей базы данных?',  'Запрос на копирование БД',(MB_YESNO+MB_ICONQUESTION))=idYes
@@ -619,6 +627,7 @@ MessageDlg('Копирование завершено!',mtInformation, [mbOk], 0
 end;
 end;
 
+//nuppu, et kustutada kõik kinnitusega kirjed / кнопка удаления всех записей с подтверждением
 procedure TAUMaloiPrimorski.N19Click(Sender: TObject);
 begin
 if MessageBox(Handle, 'Вы действительно хотите удалить все записи?',  'Запрос на удаление',(MB_YESNO+MB_ICONQUESTION))=idYes
@@ -654,6 +663,7 @@ ADOQuerySpend.ExecSQL;
 ADOQuerySpend.Active:=True;
 end;
 
+//vaikeseadete taastamise nupp / кнопка восстановления настроек по умолчанию
 procedure TAUMaloiPrimorski.N23Click(Sender: TObject);
 var searchResult : TSearchRec;
 begin
@@ -672,7 +682,7 @@ end;
 
 end;
 
-//автоматический подгон длины поля под текст
+//protseduur, mis muudab tabelite välimust / процедура которая изменяет внешний вид таблиц
 procedure TAUMaloiPrimorski.DBGrid1DrawColumnCell(Sender: TObject;
   const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
 Var
@@ -685,6 +695,7 @@ with THackGrid(Sender), Canvas do
   begin
     if (DataLink.ActiveRecord = Row - FixedRows) then
     begin
+    //valitud rea esiletõstmine rohelise värviga / выделение выбранной строки зелёным цветом
       Brush.Color := clMoneyGreen;
     end
     else
@@ -692,11 +703,12 @@ with THackGrid(Sender), Canvas do
       Font.Color := clBlack;
     TDBGrid(Sender).DefaultDrawColumnCell(Rect, DataCol, Column, State);
   end;
+  //kohandab automaatselt välja pikkuse vastavalt tekstile / автоматический подгон длины поля под текст
   w := 5+DBGrid1.Canvas.TextExtent(Column.Field.DisplayText).cx;
   if w>column.Width then Column.Width := w;
 end;
 
-//автоматический подгон длины поля под текст 
+//protseduur, mis muudab tabelite välimust 2 / процедура которая изменяет внешний вид таблиц 2
 procedure TAUMaloiPrimorski.DBGrid2DrawColumnCell(Sender: TObject;
   const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
 Var
@@ -707,6 +719,7 @@ with THackGrid(Sender), Canvas do
   begin
     if (DataLink.ActiveRecord = Row - FixedRows) then
     begin
+    //valitud rea esiletõstmine rohelise värviga / выделение выбранной строки зелёным цветом
       Brush.Color := clMoneyGreen;
     end
     else
@@ -714,9 +727,10 @@ with THackGrid(Sender), Canvas do
       Font.Color := clBlack;
     TDBGrid(Sender).DefaultDrawColumnCell(Rect, DataCol, Column, State);
   end;
+  //kohandab automaatselt välja pikkuse vastavalt tekstile / автоматический подгон длины поля под текст
   w := 5+DBGrid2.Canvas.TextExtent(Column.Field.DisplayText).cx;
   if w>column.Width then Column.Width := w;
-
+  //muuta teksti värvi ükskõik milliseks esitatud värviks / изменение цвета текста на любой представленный
   if Column.FieldName = 'Примечание' then
     if (AUMaloiPrimorski.ADOQueryElectro.FieldByName('Color').AsString='Красный') then
       begin
@@ -761,7 +775,7 @@ with THackGrid(Sender), Canvas do
 
 end;
 
-//автоматический подгон длины поля под текст 
+//protseduur, mis muudab tabelite välimust 3 / процедура которая изменяет внешний вид таблиц 3
 procedure TAUMaloiPrimorski.DBGrid3DrawColumnCell(Sender: TObject;
   const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
 Var
@@ -772,6 +786,7 @@ with THackGrid(Sender), Canvas do
   begin
     if (DataLink.ActiveRecord = Row - FixedRows) then
     begin
+    //valitud rea esiletõstmine rohelise värviga / выделение выбранной строки зелёным цветом
       Brush.Color := clMoneyGreen;
     end
     else
@@ -779,9 +794,10 @@ with THackGrid(Sender), Canvas do
       Font.Color := clBlack;
     TDBGrid(Sender).DefaultDrawColumnCell(Rect, DataCol, Column, State);
   end;
+  //kohandab automaatselt välja pikkuse vastavalt tekstile / автоматический подгон длины поля под текст
   w := 5+DBGrid3.Canvas.TextExtent(Column.Field.DisplayText).cx;
   if w>column.Width then Column.Width := w;
-
+  //muuta teksti värvi ükskõik milliseks esitatud värviks / изменение цвета текста на любой представленный
   if Column.FieldName = 'Примечание' then
     if (AUMaloiPrimorski.ADOQueryFinances.FieldByName('Color').AsString='Красный') then
       begin
@@ -826,7 +842,7 @@ with THackGrid(Sender), Canvas do
 
 end;
 
-//автоматический подгон длины поля под текст 
+//protseduur, mis muudab tabelite välimust 4 / процедура которая изменяет внешний вид таблиц 4
 procedure TAUMaloiPrimorski.DBGrid4DrawColumnCell(Sender: TObject;
   const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
 Var
@@ -837,6 +853,7 @@ with THackGrid(Sender), Canvas do
   begin
     if (DataLink.ActiveRecord = Row - FixedRows) then
     begin
+    //valitud rea esiletõstmine rohelise värviga / выделение выбранной строки зелёным цветом
       Brush.Color := clMoneyGreen;
     end
     else
@@ -844,9 +861,10 @@ with THackGrid(Sender), Canvas do
       Font.Color := clBlack;
     TDBGrid(Sender).DefaultDrawColumnCell(Rect, DataCol, Column, State);
   end;
+  //kohandab automaatselt välja pikkuse vastavalt tekstile / автоматический подгон длины поля под текст
   w := 5+DBGrid4.Canvas.TextExtent(Column.Field.DisplayText).cx;
   if w>column.Width then Column.Width := w;
-
+  //muuta teksti värvi ükskõik milliseks esitatud värviks / изменение цвета текста на любой представленный
   if Column.FieldName = 'Примечание' then
     if (AUMaloiPrimorski.ADOQuerySpend.FieldByName('Color').AsString='Красный') then
       begin
@@ -891,6 +909,7 @@ with THackGrid(Sender), Canvas do
 
 end;
 
+//majutuse leidmine / поиск по дому 
 procedure TAUMaloiPrimorski.Edit1Change(Sender: TObject);
 //var help1, help2:string;
 begin
@@ -920,6 +939,7 @@ with AUMaloiPrimorski.ADOQuery1 do
 
 end;
 
+//kuupäeva otsing / поиск по дате
 procedure TAUMaloiPrimorski.Edit2Change(Sender: TObject);
 var help3, help4:string;
 
@@ -944,7 +964,8 @@ with AUMaloiPrimorski.ADOQueryFinances do
 
 end;
 
-
+//kood silumiseks, et valitud maja id oleks näha. Kasutatakse ainult programmeerija poolt
+//код для отладки, чтобы можно было увидеть id выбранного дома. Используется только программистом
 procedure TAUMaloiPrimorski.DBEdit1Change(Sender: TObject);
 var h1, h2:string;
 begin
@@ -973,6 +994,7 @@ with AUMaloiPrimorski.ADOQueryFinances do
   end;
 end;
 
+//tabeli uuendamise nupp / кнопка обновления таблиц
 procedure TAUMaloiPrimorski.Button5Click(Sender: TObject);
 var
   w : Integer;
@@ -983,18 +1005,19 @@ DBGrid3.Refresh;
 DBGrid4.Refresh;
 end;
 
-//Сделать активной кнопку "удаление всех записей"
+//Tee nupp "kustuta kõik kirjed" aktiivseks / Сделать активной кнопку "удаление всех записей"
 procedure TAUMaloiPrimorski.Button3Click(Sender: TObject);
 begin
 N18.Enabled := True;
 end;
 
-//Сбросить кнопку "удаление всех записей"
+//Nupu "kustuta kõik kirjed" lähtestamine / Сбросить кнопку "удаление всех записей"
 procedure TAUMaloiPrimorski.Button4Click(Sender: TObject);
 begin
 N18.Enabled := False;
 end;
 
+//väljuda programmist. Enam ei kasutata / выход из программы. Больше не используется
 procedure TAUMaloiPrimorski.N13Click(Sender: TObject);
 begin
 if MessageBox(Handle, 'Вы действительно хотите выйти из программы?',  'Выход',(MB_YESNO+MB_ICONQUESTION))=idYes
@@ -1003,7 +1026,7 @@ AUMaloiPrimorski.Close;
 end;
 end;
 
-//не используется, тоже подгоняет длину под текст
+//ei kasutata, reguleerib ka teksti pikkust / не используется, тоже подгоняет длину под текст
 procedure TAUMaloiPrimorski.FormActivate(Sender: TObject);
 Var
   i : Integer;

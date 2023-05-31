@@ -31,12 +31,14 @@ implementation
 
 uses Unit1, Unit2, Unit3, Unit6;
 
+//kausta "ülevaade" nupp / кнопка "обзор"
 procedure TBDForm.Button1Click(Sender: TObject);
 begin
 if BDForm.OpenDialog1.Execute then BDForm.Edit1.Text:=BDForm.OpenDialog1.FileName;
 
 end;
 
+//andmebaasi tee salvestamine ini-faili / сохранение пути базы данных в ini файл
 procedure TBDForm.Button2Click(Sender: TObject);
 begin
 //Ini:=TIniFile.Create(ExtractFilePath(ParamStr(0))+'DataBaseSettings.ini');
@@ -62,6 +64,7 @@ BDForm.Close;
 end;
 end;
 
+//andmete kirjutamine ini-faili / запись данных в ini файл
 procedure TBDForm.FormCreate(Sender: TObject);
 begin
 //Ini:=TIniFile.Create(ExtractFilePath(ParamStr(0))+'DataBaseSettings.ini');

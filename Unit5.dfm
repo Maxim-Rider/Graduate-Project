@@ -1,3 +1,4 @@
+//Front-End rakenduse loomine / создание Front-End приложения
 object BDForm: TBDForm
   Left = 0
   Top = 0

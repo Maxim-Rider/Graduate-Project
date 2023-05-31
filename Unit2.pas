@@ -54,23 +54,21 @@ implementation
 
 uses Unit1, Unit5, Unit3, Unit6;
 
+//andmete säilitamine / сохранение данных
 procedure TForm2.Button1Click(Sender: TObject);
 begin
 if AUMaloiPrimorski.ADOQueryElectro.Modified then AUMaloiPrimorski.ADOQueryElectro.Post;
 Form2.Close;
 end;
 
+//tühistada rea lisamine, kui aken on suletud / отмена добавления строки при закрытии окна
 procedure TForm2.Button2Click(Sender: TObject);
 begin
 AUMaloiPrimorski.ADOQueryElectro.Cancel;
 Form2.Close;
 end;
 
-
-
-
-
-
+//liini lisamise tühistamine / отмена добавления строки
 procedure TForm2.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
 AUMaloiPrimorski.ADOQueryElectro.Cancel;

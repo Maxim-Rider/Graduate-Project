@@ -1,3 +1,4 @@
+//Front-End rakenduse loomine / создание Front-End приложения
 object Form6: TForm6
   Left = 0
   Top = 0

@@ -1,3 +1,4 @@
+//Front-End rakenduse loomine / создание Front-End приложения
 object Form2: TForm2
   Left = 0
   Top = 0

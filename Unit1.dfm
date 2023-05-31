@@ -1,4 +1,5 @@
-﻿object AUMaloiPrimorski: TAUMaloiPrimorski
+﻿//Front-End rakenduse loomine / создание Front-End приложения
+object AUMaloiPrimorski: TAUMaloiPrimorski
   Left = 206
   Top = 0
   Width = 1500
